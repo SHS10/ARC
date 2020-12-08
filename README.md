@@ -1,3 +1,26 @@
+# Problems: 
+ - Problem :5bd6f4ac
+    #### General Description (Problem and solving it visually):
+    We get the zoomed in grid, only containing the top right third of the original input grid. 
+    ##### Algorithm (for code)
+    - First we get the dimensions of the input in width and height
+    - Then we get the top 1/3 of rows from the input and the the last 2/3 of the columns
+    - Reassign to x and return
+    - 
+
+ - Problem : 1a07d186
+    #### General Description:
+    We want match the individual grids to either side of the matching colored vertical or horizontal lines whichever is nearest. Otherwise we can delete them. 
+    ##### Algorithm (for code)
+     - Find where the there are non-empty grids
+     - Convert to transpose (for ease of programming)
+     - Find the lines and where they occur 
+     - From the non-empty grids check if any of them match the colors of the lines
+     - Find based on position of that point place that point either before after that lines
+     - Convert back to original shape and return as x
+
+
+
 # The Abstraction and Reasoning Corpus (ARC)
 
 This repository contains the ARC task data, as well as a browser-based interface for humans to try their hand at solving the tasks manually.

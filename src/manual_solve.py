@@ -10,15 +10,32 @@ import re
 ### result. Name them according to the task ID as in the three
 ### examples below. Delete the three examples. The tasks you choose
 ### must be in the data/training directory, not data/evaluation.
-def solve_6a1e5592(x):
+
+### ID:14511263 
+### Name: Hasan Syed
+### URL: https://github.com/SHS10/ARC 
+
+def solve_5bd6f4ac(x):
+    # get shape data in different categories
+    num_rows = x.shape[0]
+    num_cols = x.shape[1]
+    # perform integer division to get the right quarter of the array 
+    # regardless of dimensions for extensibility to different dimensions.
+    x = x[0:num_rows//3, 2*(num_cols//3):num_cols]
     return x
 
-def solve_b2862040(x):
-    return x
-
-def solve_05269061(x):
-    return x
-
+# def solve_1a07d186(x):
+#     # step 1: find horizontal or verticle lines that contain none black continous lines. 
+#     print("####################")
+#     rows = x[0:, ]
+#     where = np.(x[0:,] != 0)
+#     print("something---->\n", where)
+#     # if np.any(rows != 0):
+#     #     print("something")
+#     #     row.
+#     # thing = np.all(rows != 0)
+#     # print(thing)
+#     return x
 
 def main():
     # Find all the functions defined in this file whose names are
