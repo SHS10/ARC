@@ -1,5 +1,6 @@
 ## Purpose of this repo:
-Manually (using heuristics) solving some of the problems in Chollet's ARC - through matrix/vector based translations and transposes as part of a college assignment. 
+Manually (using heuristics) solving some of the problems in Chollet's ARC - through matrix/vector based translations and transposes as part of a college assignment.
+# Report: 
 ## Problems: 
  - Problem : **5bd6f4ac**
     #### General Description (Problem and solving it visually - intuition):
