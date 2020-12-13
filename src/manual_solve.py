@@ -23,7 +23,7 @@ import re
 # *********************************
 # *********************************
 
-### URL: https://github.com/SHS10/ARC 
+### LINK TO GITHUB: https://github.com/SHS10/ARC 
 # *********************************
 # *********************************
 ### BETTER formatting availalbe in report in README.md format - check link.
