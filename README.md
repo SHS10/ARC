@@ -1,25 +1,63 @@
-# Problems: 
- - Problem :5bd6f4ac
-    #### General Description (Problem and solving it visually):
+## Purpose of this repo:
+Manually (using heuristics) solving some of the problems in Chollet's ARC - through matrix/vector based translations and transposes as part of a college assignment. 
+## Problems: 
+ - Problem : **5bd6f4ac**
+    #### General Description (Problem and solving it visually - intuition):
     We get the zoomed in grid, only containing the top right third of the original input grid. 
-    ##### Algorithm (for code)
+    ##### Algorithm (to  guide understandiing of the code)
     - First we get the dimensions of the input in width and height
     - Then we get the top 1/3 of rows from the input and the the last 2/3 of the columns
     - Reassign to x and return
-    - 
 
- - Problem : 1a07d186
-    #### General Description:
-    We want match the individual grids to either side of the matching colored vertical or horizontal lines whichever is nearest. Otherwise we can delete them. 
-    ##### Algorithm (for code)
-     - Find where the there are non-empty grids
-     - Convert to transpose (for ease of programming)
-     - Find the lines and where they occur 
-     - From the non-empty grids check if any of them match the colors of the lines
-     - Find based on position of that point place that point either before after that lines
-     - Convert back to original shape and return as x
+    **status**: *fully solved* - all training examples and test case.
 
 
+ - Problem : **1a07d186**
+    #### General Description (Problem and solving it visually - intuition):
+    We want detect the individual grids to either side of the matching colored vertical or horizontal lines whichever is nearest. Otherwise we can delete them. We then translate individual colors to the the nerarest side of the appropriate color matching line. 
+    ##### Algorithm (to guide understanding of the code)
+     - Find where the there are non-empty grids.
+     - Convert to transpose (for ease of programming), only if the lines vertical - this helps simplify the below computation. 
+     - Find the coordinates of the lines.
+     - From the non-empty grids that are not on the rows check if any of them match the colors of the lines. Note positions.
+     - Check which row the individual matching color occurs. 
+     - If the line are rows infront of the matching invididual, translate the row value to the line-row-index-1, attach above/beside the line. The column does not need to changed as we only handle all cases as vertical. If the matching line is rows behind the original value translate the row index of the individual point to the lines row index - 1. And keep the column index the same.
+     - Convert back the transpose back to the original shape and return as x.
+
+    **status**: *fully solved* - all training examples and the test case. 
+
+
+ - Problem : **6b9890af**
+   #### General Description:
+   We want to place the anomaly into the red box, and scale the anomaly relative to the red box and return this.
+   ##### Algorithm (to guide understanding of the code)
+      - Find the box from the space - we assume that it is always square and is always red (2): so getting the first row is enough.
+      - Create the red square
+      - Get the coordinates of the anomaly in the original product. Note the coordinates. 
+      - Find the minimum value that occurs in the rows and cols respectively from the anomaly coordinates. 
+      - Convert them to a range between 0-3 by getting the modulus of the indexes with minimum index value. (assumption here is that we will always be working with anomalies of dimension 3x3).
+      - The scaling is calculated for the box by dividing the internal dimension of the box by 3. And the returning value is a added when specifying where to end a row and column. If division returns 1 i.e. the theres no upscaling. We set scaling to be 0. 
+      - Split the internal area of the red block into thirds. 
+      - For the row coordinates of the 0-3 encoded anamoly array we find the matching third of the split box. 
+      - These are starting coordinates (apart from the starting point for rows which can be gotten from the intersection of the internal area). 
+      - Fill the internal area of the box with the value of the anomaly.  
+
+   **status**: *partially solved. Test case and training example 3 fully passing. Unknown error for the example 2. And unusual behavior for example 1. As a similar example has been tested and showed to work in the notebook. Please check github for link to the github where the notebook NB_6b9890af.ipynb can be found in src to illustrate an example similar to example 1*
+
+## Reflections: 
+  For all the problems that I have solved and attempted to solve. The commonality that I have found between all of the problems is that there is need to find some 
+  kind of outlier or anomaly within the grid space. 
+  For all the implementations aside from the non trivial ones, there is a need to keep track of all of these anomalies and perform complex and often confusing index based 
+  manipulations. 
+  In terms of the work done by Chollet, both tasks 1a07d186 and 6b9890af share the charateristic of Object cohesion, where we have to consider non-zero entries as objects 
+  in the space. The lines in 1a07d186 and both the box and the anomaly and the scaling factor in 6b9890af. 
+  Other than that the problems are largely unique. Since what are are trying to achieve in each of these very different.
+
+   **Libraries Used and Tooling**: In terms of the library and tooling and features of the Python language used, I have written all of this code using the numpy and python.
+   For finding the coordinates of anomlies the np.where and np.all and the np.any functions were sometimes useful. While Sometimes I have eshewed the use of numpy vectorization for the native python lists since it allowed me to follow the code flow more easily as it is often hard to visualise and understand what is happening in within loops. I have also used different numpy functions such as transpose and array_split where it was useful to do so.
+
+<!-- Ownership watermark -->
+<!-- Code and report by Name:Hasan Syed, Student ID: 14511263 -->
 
 # The Abstraction and Reasoning Corpus (ARC)
 
